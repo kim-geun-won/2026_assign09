@@ -1,6 +1,14 @@
 const API_URL = "https://6ae7384a56b2ee1e5440352e.mockapi.io/books";
 
 const message = document.getElementById("message");
+
+const form = document.getElementById("bookForm");
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const priceInput = document.getElementById("price");
+const yearInput = document.getElementById("year");
+const genreInput = document.getElementById("genre");
+
 let books = [];
 
 function renderBooks(list) {
