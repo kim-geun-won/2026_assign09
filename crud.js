@@ -152,3 +152,17 @@ form.addEventListener("submit", async (event) => {
       });
   }
 });
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+  const keyword = searchInput.value;
+
+  if (keyword === "") {
+    renderBooks(books);
+    return;
+  }
+
+  const result = books.filter(book => book.title === keyword);
+  renderBooks(result);
+});
