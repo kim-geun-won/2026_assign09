@@ -38,6 +38,41 @@ async function loadBooks() {
   renderBooks(books);
 }
 
+async function addBook(book) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(book)
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+  await loadBooks();
+}
+
 loadBooks().catch(error => {
   message.textContent = `목록 불러오는데 실패했습니다: ${error.message}`;
+});
+
+
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const book = {
+    title: titleInput.value,
+    author: authorInput.value,
+    price: Number(priceInput.value),
+    year: Number(yearInput.value),
+    genre: genreInput.value
+  };
+
+  addBook(book)
+    .then(() => {
+      message.textContent = "등록되었습니다";
+      form.reset();
+    })
+    .catch(error => {
+      message.textContent = `등록에 실패했습니다: ${error.message}`;
+    });
 });
