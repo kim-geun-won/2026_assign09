@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <a href="index.html">홈으로 이동</a>
+    <h1>도서 관리</h1>
+
+    <form id="bookForm" novalidate>
+
+      <input id="title" placeholder="제목">
+      <input id="author" placeholder="저자">
+      <input id="price" type="number" placeholder="가격">
+      <input id="year" type="number" placeholder="출판연도">
+
+      <select id="genre">
+        <option value="">장르 선택</option>
+        <option value="소설">소설</option>
+        <option value="IT">IT</option>
+        <option value="경영">경영</option>
+        <option value="에세이">에세이</option>
+      </select>
+
+      <button id="submitBtn" type="submit">추가</button>
+      <button id="cancelBtn" type="button" style="display:none">수정 취소</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <input id="searchInput" placeholder="제목 검색">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>제목</th>
+          <th>저자</th>
+          <th>가격</th>
+          <th>출판연도</th>
+          <th>장르</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      
+      <tbody id="bookList"></tbody>
+    </table>
+  </div>
+
+  <script src="crud.js"></script>
+</body>
+</html>
