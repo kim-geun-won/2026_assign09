@@ -67,6 +67,23 @@ form.addEventListener("submit", async (event) => {
     genre: genreInput.value
   };
 
+  if (book.title === "") {
+    message.textContent = "제목을 입력하세요.";
+    return;
+  }
+  if (book.author === "") {
+    message.textContent = "저자를 입력하세요.";
+    return;
+  }
+  if (priceInput.value === "" || book.price < 0) {
+    message.textContent = "제대로 된 가격을 입력하세요.";
+    return;
+  }
+  if (book.year < 1900 || book.year > 2026) {
+    message.textContent = "출판연도는 1900~2026년 사이로 입력하세요.";
+    return;
+  }
+
   addBook(book)
     .then(() => {
       message.textContent = "등록되었습니다";
@@ -76,3 +93,4 @@ form.addEventListener("submit", async (event) => {
       message.textContent = `등록에 실패했습니다: ${error.message}`;
     });
 });
+
